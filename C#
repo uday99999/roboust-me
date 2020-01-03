@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+
+
+namespace ConsoleApp2
+{
+    public class Employee
+
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public decimal Salary { get; set; }
+
+    }
+
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+            var yesno = "yes";
+            var employee = new List<Employee>();
+
+
+            while (yesno == "yes")
+            {
+
+
+                Console.WriteLine("Please enter your First name");
+                var firstName = Console.ReadLine();
+                if (string.IsNullOrEmpty(firstName))
+                {
+                    Console.WriteLine("Name field cannot be empty");
+                    firstName = Console.ReadLine();
+                }
+                Console.WriteLine("Please enter your Last name");
+                var lastName = Console.ReadLine();
+                if (string.IsNullOrEmpty(lastName))
+                {
+                    Console.WriteLine("Name field cannot be empty");
+                    lastName = Console.ReadLine();
+                }
+                Console.WriteLine("Please enter your Salary");
+                var salary = decimal.Parse(Console.ReadLine());
+
+                var employees = new Employee();
+                employees.FirstName = firstName;
+                employees.LastName = lastName;
+                employees.Salary = salary;
+                employee.Add(employees);
+
+
+
+                Console.WriteLine("Continue with other employee details? \n Enter Yes or No");
+                yesno = Console.ReadLine();
+
+
+                if ((!File.Exists("Employeedetails.txt")))
+                {
+                    
+                    {
+                        foreach (var employ in employee)
+                        {
+                            {
+                                
+                                    System.IO.File.AppendAllText(@"C:\Users\udayp\Employeedetails.txt", "First Name Entered: " + employees.FirstName + "\n" + "Last name entered: " + employees.LastName + "\n" + "Salary entered: " + employees.Salary + "\n");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+   
+
+    
